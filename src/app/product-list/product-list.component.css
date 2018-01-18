@@ -1,0 +1,11 @@
+.product-list {
+    display: grid;
+    grid-template-columns: 33% auto 33%;
+    grid-template-rows: auto;
+
+}
+
+.product-list > div {
+    margin-left: 20px;
+    border-bottom: 1px solid salmon;
+}

@@ -1,8 +1,24 @@
 .product {
-    margin: 3rem 0;
+    margin: 1rem 0;
 }
 
 .equivalentProduct {
-    margin: 0 1rem;
+    margin: 0 0.5rem;
     color: #368;
+}
+
+.status {
+    display: inline-block;
+}
+
+.status.available {
+    background-color: lightgreen;
+}
+
+.status.soldout {
+    background-color: lightcoral;
+}
+
+ul {
+    margin-top: 0;
 }

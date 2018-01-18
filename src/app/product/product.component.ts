@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { Category } from './category.enum';
 import { Product } from './product.model';
 
 @Component({
@@ -36,7 +37,7 @@ export class ProductComponent implements OnInit {
     return this.product.equivalents;
   }
   get category() {
-    return this.product.category;
+    return Category[this.product.category];
   }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
 
-<app-product [product]="availableProduct"></app-product>
-<app-product [product]="soldOutProduct"></app-product>
+<app-cart *ngIf="isSomethingInCart"></app-cart>
+<app-product-list></app-product-list>
 

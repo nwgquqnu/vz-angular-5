@@ -1,12 +1,13 @@
 <div class="product">
   <div><span>Product name:</span> <span>{{name}}</span></div>
   <div><span>Category:</span> <span>{{category}}</span></div>
-  <div><span>Price:</span> <span>{{price}}</span></div>
-  <div *ngIf="isAvailable;else elseBlock">in store</div>
-  <ng-template #elseBlock>sold out</ng-template>
+  <div>
+    <span>Price:</span> <span>{{price}}</span>
+    <span *ngIf="isAvailable;else elseBlock" class="available status">in store</span>
+    <ng-template #elseBlock><span class="soldout status"> sold out</span></ng-template>
 
+  </div>
   <div><span>Description:</span> <span>{{description}}</span></div>
-  <div><span>Product name:</span> <span>{{name}}</span></div>
   <div>
     Ingredients:
     <ul>
