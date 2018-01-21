@@ -1,0 +1,6 @@
+<ng-container *ngIf="isSomethingInCart">
+  <h2>Cart</h2>
+  <div>
+    <div *ngFor="let product of cartProducts"><span>{{product.name}}</span><button (click)="onRemoveFromCart(product)">Remove from cart</button></div>
+  </div>
+</ng-container>

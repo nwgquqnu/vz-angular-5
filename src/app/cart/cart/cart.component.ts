@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from './cart.service';
-import { Product } from '../product/product.model';
+import { CartService } from '../../services/cart.service';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-cart',
@@ -20,6 +20,10 @@ export class CartComponent implements OnInit {
 
   onRemoveFromCart(product: Product) {
     this.cartService.removeProduct(product);
+  }
+
+  get isSomethingInCart() {
+    return this.cartService.getProducts().length > 0;
   }
 
 }
