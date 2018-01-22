@@ -16,7 +16,7 @@ export class ProductService {
   }
 
   private availableProduct(name: string = 'Samsung fridge') {
-    const newProduct = new Product(name, 32000, Category.BigElectronics);
+    const newProduct = new Product(name, 1500, Category.BigElectronics);
     newProduct.description = 'Really big fridge';
     newProduct.equivalents = ['LG fridge', 'Liebbher fridge'];
     newProduct.ingredients = ['doors', 'ice container', 'instruction'];
@@ -24,7 +24,7 @@ export class ProductService {
   }
 
   private soldOutProduct() {
-    const newProduct = new Product('Harry Plotter', 250, Category.Books);
+    const newProduct = new Product('Harry Plotter', 25, Category.Books);
     newProduct.description = 'Very interesting story about young magical printer';
     newProduct.equivalents = ['Hobbit', 'Discworld'];
     newProduct.ingredients = ['magic', 'friendship', 'adventures'];

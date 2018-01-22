@@ -1,0 +1,12 @@
+:host.active {
+    background-color: lightgray;
+}
+
+span {
+    min-width: 10rem;
+    display: inline-block;
+}
+
+input[type='number'] {
+    width: 2rem;
+}

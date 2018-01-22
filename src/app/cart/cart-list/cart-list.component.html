@@ -1,0 +1,14 @@
+<ng-container *ngIf="isSomethingInCart">
+  <h2>Cart</h2>
+  <div>
+    <div *ngFor="let item of cartItems">
+      <app-cart-item [item]="item" (itemDeleted)="onRemoveFromCart(item)" (itemCountChanged)="onItemCountChanged($event)"></app-cart-item>
+    </div>
+  </div>
+  <div>
+    Total items in cart: {{totalItems}}
+  </div>
+  <div>
+    Sum to pay: {{totalSum | currency:USD:symbol}}
+  </div>
+</ng-container>
