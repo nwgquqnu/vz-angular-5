@@ -30,3 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # Demo Angular5 Shop application 
 
 This application contains mocked list of Products which can be added to a cart and removed from it
+
+Each item in the cart has a number input which allows user to change item quantity.
+
+Notification area shows last performed event
