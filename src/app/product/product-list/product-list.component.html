@@ -2,6 +2,6 @@
 <div class="product-list">
   <div *ngFor="let product of products">
     <app-product [product]="product"></app-product>
-    <button *ngIf="product.isAvailable" (click)="onBuy(product)">Buy {{product.name}}</button>
+    <button [ngClass]="{'sold-out': !product.isAvailable}" [disabled]="!product.isAvailable" (click)="onBuy(product)">Buy {{product.name}}</button>
   </div>
 </div>

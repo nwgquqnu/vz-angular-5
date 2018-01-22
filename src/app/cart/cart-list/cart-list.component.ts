@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 
 import { CartCountChangedEvent } from '../../models/cart-count-changed.event';
 import { CartItem } from '../../models/cart-item.model';
 import { CartService } from '../../services/cart.service';
+import { CartItemComponent } from '../cart-item/cart-item.component';
 
 @Component({
   selector: 'app-cart-list',
@@ -10,6 +11,7 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart-list.component.css']
 })
 export class CartListComponent implements OnInit {
+  @ViewChildren(CartItemComponent) itemComponents: QueryList<CartItemComponent>;
 
   constructor(private cartService: CartService) { }
 
@@ -38,6 +40,10 @@ export class CartListComponent implements OnInit {
 
   onItemCountChanged(event: CartCountChangedEvent) {
     this.cartService.updateItemQuantity(event.item, event.newCount);
+  }
+
+  onRemoveAll() {
+    this.itemComponents.forEach(item => item.onRemoveFromCart());
   }
 
 }

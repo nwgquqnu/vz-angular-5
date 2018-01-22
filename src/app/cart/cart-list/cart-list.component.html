@@ -1,5 +1,6 @@
 <ng-container *ngIf="isSomethingInCart">
   <h2>Cart</h2>
+  <button (click)="onRemoveAll()">Clear</button>
   <div>
     <div *ngFor="let item of cartItems">
       <app-cart-item [item]="item" (itemDeleted)="onRemoveFromCart(item)" (itemCountChanged)="onItemCountChanged($event)"></app-cart-item>
