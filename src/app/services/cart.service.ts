@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 
 import { CartItem } from '../models/cart-item.model';
 import { Product } from '../models/product';
+import { LocalStorageService } from './local-storage.service';
+import { ConfigOptionsService } from './config-options.service';
 
 
 @Injectable()
@@ -17,12 +19,25 @@ export class CartService {
 
   private totalSum: number;
   private totalQuantity: number;
-  constructor() { }
+  constructor(
+    @Optional() private localStorageService: LocalStorageService,
+    @Optional() private configOptions: ConfigOptionsService,
+  ) {
+    if (!(localStorageService && configOptions)) {
+      console.log('CartService: LocalStorageService and/or ConfigOptionsService not found. Skipping initialization',
+       localStorageService, configOptions);
+      return;
+    }
+    const storageConfig: [string, CartItem][] = localStorageService.getItem(configOptions.getCartStorageKey());
+    this.cartItems = new Map<string, CartItem>(storageConfig);
+    this.updateTotalsAndChannels('initialized from local storage');
+   }
 
   addProduct(product: Product, quantity: number = 1) {
     if (quantity < 1) {
       return;
     }
+
     const existingItem = this.cartItems.get(product.name);
     if (existingItem) {
       this.updateItemQuantity(existingItem, existingItem.quantity + quantity);
@@ -81,8 +96,15 @@ export class CartService {
 
   private updateTotalsAndChannels(type: string, item?: CartItem) {
     this.updateTotals();
+    this.updateLocalStorage();
     this.channel.next({type, item});
     this.cartItemsChannel.next(this.getItemsFromMap());
+  }
+
+  private updateLocalStorage() {
+    if (this.localStorageService && this.configOptions) {
+      this.localStorageService.setItem(this.configOptions.getCartStorageKey(), Array.from(this.cartItems));
+    }
   }
 
 }

@@ -1,4 +1,11 @@
-
+<h2>Welcome
+    <ng-container *ngIf="appTitle"> to {{appTitle}}</ng-container>
+</h2>
+<div *ngIf="login">User: {{login}}({{email}})</div>
+<div>
+    <button (click)="onGenerateNewString()">Generate random string with 10-char length </button>
+    Generated string: {{currentRandomString}}
+</div>
 <app-cart-notification></app-cart-notification>
 <app-cart-list></app-cart-list>
 <app-product-list></app-product-list>
