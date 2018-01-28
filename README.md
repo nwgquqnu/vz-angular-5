@@ -34,3 +34,9 @@ This application contains mocked list of Products which can be added to a cart a
 Each item in the cart has a number input which allows user to change item quantity.
 
 Notification area shows last performed event
+
+When user clicks on Welcome text or Product text then text color is changed to lightsalmon
+
+LocalStorage is used to store elements of the cart, so cart items are present on page reload 
+
+ CartService uses ConfigOptionsService to determine key for the LocalStorage
