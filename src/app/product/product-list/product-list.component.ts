@@ -11,21 +11,19 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductListComponent implements OnInit {
 
+  products: Product[];
   constructor(
     private productService: ProductService,
     private cartService: CartService
   ) { }
 
-  get products() {
-    return this.productService.getProducts();
+  ngOnInit() {
+    this.products = this.productService.getProducts();
   }
 
   onBuy(product: Product) {
     console.log(`product ${product.name} is bought`);
     this.cartService.addProduct(product);
-  }
-
-  ngOnInit() {
   }
 
 }
