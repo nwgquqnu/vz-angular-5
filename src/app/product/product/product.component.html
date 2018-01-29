@@ -1,6 +1,6 @@
 <div class="product" appChangeColor="lightsalmon">
   <div><span>Product name:</span> <span>{{name}}</span></div>
-  <div><span>Category:</span> <span>{{category}}</span></div>
+  <div><span>Category:</span> <span>{{category | uppercase}}</span></div>
   <div>
     <span>Price:</span> <span>{{price}}</span>
     <span *ngIf="isAvailable;else elseBlock" class="available status">in store</span>

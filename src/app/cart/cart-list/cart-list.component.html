@@ -1,8 +1,15 @@
 <ng-container *ngIf="isSomethingInCart">
   <h2>Cart</h2>
   <button (click)="onRemoveAll()">Clear</button>
+  <select [(ngModel)]="sortField" name="sortField">
+    <option value="product.name">Sort by product name</option>
+    <option value="quantity">Sort by quantity</option>
+    <option value="product.price">Sort by product price</option>
+  </select>
+  <label for="sortOrder">Sort ascending: </label>
+  <input type="checkbox" [(ngModel)]="sortAsc" name="sortOrder" id="sortOrder">
   <div>
-    <div *ngFor="let item of cartItems">
+    <div *ngFor="let item of (cartItems | orderBy:sortField:sortAsc)">
       <app-cart-item [item]="item" (itemDeleted)="onRemoveFromCart(item)" (itemCountChanged)="onItemCountChanged($event)"></app-cart-item>
     </div>
   </div>

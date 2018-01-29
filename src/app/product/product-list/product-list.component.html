@@ -1,6 +1,7 @@
 <h2>Products</h2>
+<button (click)="onReloadData()">Reload data</button>
 <div class="product-list">
-  <div *ngFor="let product of products">
+  <div *ngFor="let product of (products$ | async)">
     <app-product [product]="product"></app-product>
     <button [ngClass]="{'sold-out': !product.isAvailable}" [disabled]="!product.isAvailable" (click)="onBuy(product)">Buy {{product.name}}</button>
   </div>

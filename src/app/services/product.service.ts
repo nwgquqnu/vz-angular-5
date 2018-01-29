@@ -2,21 +2,28 @@ import { Injectable } from '@angular/core';
 
 import { Category } from '../models/category.enum';
 import { Product } from '../models/product.model';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/interval';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
 
 @Injectable()
 export class ProductService {
 
-  getProducts(): Product[] {
-    return [
-      this.availableProduct(),
-      this.availableProduct('LG fridge'),
-      this.availableProduct('Liebbher fridge'),
+  getProducts(): Observable<Product[]> {
+    const products = [
+      this.availableProduct('Samsung fridge', 1500),
+      this.availableProduct('LG fridge', 2000),
+      this.availableProduct('Liebbher fridge', 1800),
       this.soldOutProduct(),
     ];
+    return Observable.interval(500)
+    .map(i => products.slice(0, i + 1))
+    .take(products.length);
   }
 
-  private availableProduct(name: string = 'Samsung fridge') {
-    const newProduct = new Product(name, 1500, Category.BigElectronics);
+  private availableProduct(name: string, price: number) {
+    const newProduct = new Product(name, price, Category.BigElectronics);
     newProduct.description = 'Really big fridge';
     newProduct.equivalents = ['LG fridge', 'Liebbher fridge'];
     newProduct.ingredients = ['doors', 'ice container', 'instruction'];

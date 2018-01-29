@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/empty';
 
 @Component({
   selector: 'app-product-list',
@@ -11,19 +13,23 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[];
+  products$: Observable<Product[]> = Observable.empty();
   constructor(
     private productService: ProductService,
     private cartService: CartService
   ) { }
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    this.products$ = this.productService.getProducts();
   }
 
   onBuy(product: Product) {
     console.log(`product ${product.name} is bought`);
     this.cartService.addProduct(product);
+  }
+
+  onReloadData() {
+    this.products$ = this.productService.getProducts();
   }
 
 }

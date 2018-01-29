@@ -14,6 +14,7 @@ import { GeneratorService, GeneratorService_L10, GeneratorServiceFactory } from 
 })
 export class AppComponent implements OnInit {
   currentRandomString = '';
+  pageUpdatedDate: Date;
 
   constructor(
     @Inject(GeneratorService_L10) @Optional() private generatorService: GeneratorService,
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.pageUpdatedDate = new Date();
     if (this.constantsService) {
       console.log('loaded application: ' + this.constantsService.CONSTANTS.app + ' version ' + this.constantsService.CONSTANTS.ver);
     } else {
