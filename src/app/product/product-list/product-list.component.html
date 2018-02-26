@@ -1,7 +1,13 @@
-<h2>Products</h2>
-<div class="product-list">
-  <div *ngFor="let product of products">
-    <app-product [product]="product"></app-product>
-    <button [ngClass]="{'sold-out': !product.isAvailable}" [disabled]="!product.isAvailable" (click)="onBuy(product)">Buy {{product.name}}</button>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+      Products
+  </div>
+  <div class="panel-body">
+    <div class="product-list">
+      <div *ngFor="let product of products">
+        <app-product [product]="product"></app-product>
+        <button class="btn btn-primary" [ngClass]="{'sold-out': !product.isAvailable}" [disabled]="!product.isAvailable" (click)="onBuy(product)">Buy {{product.name}}</button>
+      </div>
+    </div>
   </div>
 </div>

@@ -8,5 +8,15 @@ span {
 }
 
 input[type='number'] {
-    width: 2rem;
+    width: 7rem;
+}
+
+:host {
+    display: grid;
+    grid-template-columns: auto 10% 15%;
+    grid-template-rows: auto;
+}
+
+.grid-item {
+    align-self: center;
 }
