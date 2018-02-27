@@ -1,6 +1,12 @@
-.product-list {
-    display: grid;
-    grid-template-columns: 33% auto 33%;
-    grid-template-rows: auto;
+/* .btn-buy {
+    float: right;
+}
 
+.btn-buy + a {
+    clear: both;
+} */
+
+li {
+    display: grid;
+    grid-template-columns: auto 20%
 }

@@ -1,25 +1,34 @@
-<div class="product">
-  <div><span>Product name:</span> <span>{{name | async}}</span></div>
-  <div><span>Category:</span> <span>{{category | async}}</span></div>
-  <div>
-    <span>Price:</span> <span>{{price | async}}</span>
-    <span *ngIf="isAvailable;else elseBlock" class="available status">in store</span>
-    <ng-template #elseBlock><span class="soldout status"> sold out</span></ng-template>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Products
+    </div>
+    <div class="panel-body">
+      <div class="product" *ngIf="product$ | async as product">
+        <div>
+          <span>Product name:</span>
+          <span>{{product.name}}</span>
+          <span *ngIf="product.isAvailable;else elseBlock" class="label label-success">in store</span>
+          <ng-template #elseBlock><span class="label label-danger"> sold out</span></ng-template>
+        </div>
+        <div><span>Category:</span> <span>{{category | async}}</span></div>
+        <div>
+          <span>Price:</span> <span>{{product.price}}</span>
+        </div>
+        <div><span>Description:</span> <span>{{product.description}}</span></div>
+        <div>
+          Ingredients:
+          <ul>
+            <li *ngFor="let ingredient of product.ingredients">{{ingredient}}</li>
+          </ul>
+        </div>
 
-  </div>
-  <div><span>Description:</span> <span>{{description | async}}</span></div>
-  <div>
-    Ingredients:
-    <ul>
-      <li *ngFor="let ingredient of ingredients | async">{{ingredient}}</li>
-    </ul>
-  </div>
+        <div>
+          Equivalent products: <span class="equivalentProduct" *ngFor="let eqName of product.equivalents">{{eqName}}</span>
+        </div>
 
-  <div>
-    Equivalent products: <span class="equivalentProduct" *ngFor="let eqName of equivalents | async">{{eqName | async}}</span>
+        <p>
+            <button class="btn btn-default" (click)="gotoProducts(product)">Back</button>
+          </p>
+      </div>
   </div>
-
-  <p>
-      <button (click)="gotoProducts(product$ | async)">Back</button>
-    </p>
 </div>

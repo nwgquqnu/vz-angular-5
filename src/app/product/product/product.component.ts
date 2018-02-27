@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  private product$: Observable<Product>;
+  product$: Observable<Product>;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,28 +31,6 @@ export class ProductComponent implements OnInit {
     this.router.navigate(['/products', { id: productId }]);
   }
 
-  get name() {
-    return this.product$.map(p => p.name);
-  }
-
-  get description() {
-    return this.product$.map(p => p.description);
-  }
-
-  get price() {
-    return this.product$.map(p => p.price);
-  }
-
-  get isAvailable() {
-    return this.product$.map(p => p.isAvailable);
-  }
-
-  get ingredients() {
-    return this.product$.map(p => p.ingredients);
-  }
-  get equivalents() {
-    return this.product$.map(p => p.equivalents);
-  }
   get category() {
     return this.product$.map(p => Category[p.category]);
   }

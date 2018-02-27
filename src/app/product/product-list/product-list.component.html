@@ -8,8 +8,14 @@
         <app-product [product]="product"></app-product>
         <button class="btn btn-primary" [ngClass]="{'sold-out': !product.isAvailable}" [disabled]="!product.isAvailable" (click)="onBuy(product)">Buy {{product.name}}</button>
       </div> -->
-      <ul *ngFor="let product of products">
-        <li><a [routerLink]="['/product', product.id]" routerLinkActive="active">Products</a><button class="btn btn-primary" [ngClass]="{'sold-out': !product.isAvailable}" [disabled]="!product.isAvailable" (click)="onBuy(product)">Buy {{product.name}}</button></li>
+      <ul class="nav nav-pills nav-stacked">
+        <li *ngFor="let product of products$ | async" [class.active]="product.id === selectedId">
+          <a class="product-name" [routerLink]="['/product', product.id]">{{product.name}}
+            <span *ngIf="product.isAvailable;else elseBlock" class="label label-success">in store</span>
+          <ng-template #elseBlock><span class="label label-danger"> sold out</span></ng-template>
+          </a>
+          <button class="btn-buy btn btn-default btn-sm" [ngClass]="{'sold-out': !product.isAvailable}" [disabled]="!product.isAvailable" (click)="onBuy(product)">Buy {{product.name}}</button>
+        </li>
       </ul>
     </div>
   </div>
