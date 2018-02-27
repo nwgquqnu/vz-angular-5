@@ -3,12 +3,13 @@
     <div class="row"><div class="col-md-12">
         <nav>
             <a class="btn btn-default" [routerLink]="['/products']" routerLinkActive="active">Products</a>
-            <a class="btn btn-default" [routerLink]="['/cart']" routerLinkActive="active">Cart</a>
+            <a class="btn btn-default" [routerLink]="['/cart']" routerLinkActive="active">Cart <span class="badge">{{cartItemsCount}}</span></a>
             <a class="btn btn-default" [routerLink]="['/admin']" routerLinkActive="active">Admin</a>
+            <a class="btn btn-default" [routerLink]="[{outlets:{notifications:['cart']}}]" routerLinkActive="active" (click)="notificationsClicked()">Notifications</a>
         </nav>
     </div></div>
     <div class="row"><div class="col-md-12">
-        <router-outlet id="notifications"></router-outlet>
+        <router-outlet name="notifications" #notifications_outlet="outlet"></router-outlet>
     </div></div>
     <div class="row"><div class="col-md-12">
         <router-outlet></router-outlet>

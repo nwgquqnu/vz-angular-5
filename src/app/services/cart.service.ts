@@ -57,7 +57,7 @@ export class CartService {
     }
 
   private total(items: number[]): number {
-    return items.reduce((previousValue, currentValue) => previousValue + currentValue);
+    return items.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
   }
 
 }
