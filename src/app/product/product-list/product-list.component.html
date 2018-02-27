@@ -4,10 +4,13 @@
   </div>
   <div class="panel-body">
     <div class="product-list">
-      <div *ngFor="let product of products">
+      <!-- <div *ngFor="let product of products">
         <app-product [product]="product"></app-product>
         <button class="btn btn-primary" [ngClass]="{'sold-out': !product.isAvailable}" [disabled]="!product.isAvailable" (click)="onBuy(product)">Buy {{product.name}}</button>
-      </div>
+      </div> -->
+      <ul *ngFor="let product of products">
+        <li><a [routerLink]="['/product', product.id]" routerLinkActive="active">Products</a><button class="btn btn-primary" [ngClass]="{'sold-out': !product.isAvailable}" [disabled]="!product.isAvailable" (click)="onBuy(product)">Buy {{product.name}}</button></li>
+      </ul>
     </div>
   </div>
 </div>

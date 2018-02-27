@@ -1,46 +1,59 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 import { Category } from '../../models/category.enum';
 import { Product } from '../../models/product.model';
+import { ProductService } from '../../services/product.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
 
 @Component({
-  selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  @Input() private product: Product;
+  private product$: Observable<Product>;
 
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private productService: ProductService
   ) { }
 
+  ngOnInit() {
+    this.product$ = this.route.paramMap.switchMap((params: ParamMap) =>
+      this.productService.getProduct(+(params.get('id'))));
+  }
+
+  gotoProducts(product: Product) {
+    const productId = Product ? product.id : null;
+    this.router.navigate(['/products', { id: productId }]);
+  }
+
   get name() {
-    return this.product.name;
+    return this.product$.map(p => p.name);
   }
 
   get description() {
-    return this.product.description;
+    return this.product$.map(p => p.description);
   }
 
   get price() {
-    return this.product.price;
+    return this.product$.map(p => p.price);
   }
 
   get isAvailable() {
-    return this.product.isAvailable;
+    return this.product$.map(p => p.isAvailable);
   }
 
   get ingredients() {
-    return this.product.ingredients;
+    return this.product$.map(p => p.ingredients);
   }
   get equivalents() {
-    return this.product.equivalents;
+    return this.product$.map(p => p.equivalents);
   }
   get category() {
-    return Category[this.product.category];
+    return this.product$.map(p => Category[p.category]);
   }
-
-  ngOnInit() {
-  }
-
 }

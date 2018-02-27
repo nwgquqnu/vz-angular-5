@@ -1,22 +1,25 @@
 <div class="product">
-  <div><span>Product name:</span> <span>{{name}}</span></div>
-  <div><span>Category:</span> <span>{{category}}</span></div>
+  <div><span>Product name:</span> <span>{{name | async}}</span></div>
+  <div><span>Category:</span> <span>{{category | async}}</span></div>
   <div>
-    <span>Price:</span> <span>{{price}}</span>
+    <span>Price:</span> <span>{{price | async}}</span>
     <span *ngIf="isAvailable;else elseBlock" class="available status">in store</span>
     <ng-template #elseBlock><span class="soldout status"> sold out</span></ng-template>
 
   </div>
-  <div><span>Description:</span> <span>{{description}}</span></div>
+  <div><span>Description:</span> <span>{{description | async}}</span></div>
   <div>
     Ingredients:
     <ul>
-      <li *ngFor="let ingredient of ingredients">{{ingredient}}</li>
+      <li *ngFor="let ingredient of ingredients | async">{{ingredient}}</li>
     </ul>
   </div>
 
   <div>
-    Equivalent products: <span class="equivalentProduct" *ngFor="let eqName of equivalents">{{eqName}}</span>
+    Equivalent products: <span class="equivalentProduct" *ngFor="let eqName of equivalents | async">{{eqName | async}}</span>
   </div>
 
+  <p>
+      <button (click)="gotoProducts(product$ | async)">Back</button>
+    </p>
 </div>

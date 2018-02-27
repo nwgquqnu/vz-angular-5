@@ -1,7 +1,21 @@
 
 <div class="container">
-    <div class="row"><div class="col-md-12"><app-cart-notification></app-cart-notification></div></div>
+    <div class="row"><div class="col-md-12">
+        <nav>
+            <a class="btn btn-default" [routerLink]="['/products']" routerLinkActive="active">Products</a>
+            <a class="btn btn-default" [routerLink]="['/cart']" routerLinkActive="active">Cart</a>
+            <a class="btn btn-default" [routerLink]="['/admin']" routerLinkActive="active">Admin</a>
+        </nav>
+    </div></div>
+    <div class="row"><div class="col-md-12">
+        <router-outlet id="notifications"></router-outlet>
+    </div></div>
+    <div class="row"><div class="col-md-12">
+        <router-outlet></router-outlet>
+    </div></div>
+
+    <!-- <div class="row"><div class="col-md-12"><app-cart-notification></app-cart-notification></div></div>
     <div class="row"><div class="col-md-12"><app-cart-list></app-cart-list></div></div>
-    <div class="row"><div class="col-md-12"><app-product-list></app-product-list></div></div>
+    <div class="row"><div class="col-md-12"><app-product-list></app-product-list></div></div> -->
 </div>
 

@@ -1,19 +1,22 @@
-<div *ngIf="isSomethingInCart" class="panel panel-primary">
+<div class="panel panel-primary">
   <div class="panel-heading">
     Cart
   </div>
   <div class="panel-body">
-    <button class="btn btn-warning btn-sm" (click)="onRemoveAll()">Clear</button>
-    <div>
-      <div *ngFor="let item of cartItems">
-        <app-cart-item [item]="item" (itemDeleted)="onRemoveFromCart(item)" (itemCountChanged)="onItemCountChanged($event)"></app-cart-item>
-      </div>
-    </div>
-    <div>
-      Total items in cart: {{totalItems}}
-    </div>
-    <div>
-      Sum to pay: {{totalSum | currency:USD:symbol}}
-    </div>
+    <ng-container *ngIf="isSomethingInCart; else no_items">
+      <button class="btn btn-warning btn-sm" (click)="onRemoveAll()">Clear</button>
+      <div>
+          <div *ngFor="let item of cartItems">
+            <app-cart-item [item]="item" (itemDeleted)="onRemoveFromCart(item)" (itemCountChanged)="onItemCountChanged($event)"></app-cart-item>
+          </div>
+        </div>
+        <div>
+          Total items in cart: {{totalItems}}
+        </div>
+        <div>
+          Sum to pay: {{totalSum | currency:USD:symbol}}
+        </div>
+      </ng-container>
+      <ng-template #no_items>No items.</ng-template>
   </div>
 </div>

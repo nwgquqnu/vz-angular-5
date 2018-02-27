@@ -7,6 +7,7 @@ export class Product implements IProduct {
     ingredients: string[];
     equivalents: string[];
     constructor(
+        public id: number,
         public name: string,
         public price: number,
         public category: Category,
