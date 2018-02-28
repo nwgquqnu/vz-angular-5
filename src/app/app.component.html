@@ -1,5 +1,21 @@
 
 <div class="container">
+    <div class="row"><div class="col-md-12">
+        <div class="updated-date">{{pageUpdatedDate | date:'medium':'UTC+2'}}</div>
+    </div></div>
+    <div class="row"><div class="col-md-12">
+        <h2 appChangeColor="lightsalmon">Welcome<ng-container *ngIf="appTitle"> to {{appTitle}}</ng-container>
+        </h2>
+    </div></div>
+    <div class="row"><div class="col-md-12">
+        <div *ngIf="login">User: {{login}}({{email}})</div>
+    </div></div>
+    <div class="row"><div class="col-md-12">
+        <div>
+            <button class="btn btn-default" (click)="onGenerateNewString()">Generate random string with 10-char length </button>
+            Generated string: {{currentRandomString}}
+        </div>
+    </div></div>
     <div class="row"><div class="col-md-12"><app-cart-notification></app-cart-notification></div></div>
     <div class="row"><div class="col-md-12"><app-cart-list></app-cart-list></div></div>
     <div class="row"><div class="col-md-12"><app-product-list></app-product-list></div></div>

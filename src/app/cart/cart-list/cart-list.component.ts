@@ -17,6 +17,9 @@ export class CartListComponent implements OnInit, OnDestroy {
   cartItems: Array<CartItem>;
   private subscription: Subscription;
 
+  sortField = 'product.name';
+  sortAsc = false;
+
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
@@ -48,7 +51,8 @@ export class CartListComponent implements OnInit, OnDestroy {
   }
 
   onRemoveAll() {
-    this.itemComponents.forEach(item => item.onRemoveFromCart());
+    this.cartService.removeAllItems();
+    // this.itemComponents.forEach(item => item.onRemoveFromCart());
   }
 
 }

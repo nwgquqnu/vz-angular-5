@@ -3,8 +3,9 @@
       Products
   </div>
   <div class="panel-body">
+    <button class="btn btn-default" (click)="onReloadData()">Reload data</button>
     <div class="product-list">
-      <div *ngFor="let product of products">
+      <div *ngFor="let product of (products$ | async)">
         <app-product [product]="product"></app-product>
         <button class="btn btn-primary" [ngClass]="{'sold-out': !product.isAvailable}" [disabled]="!product.isAvailable" (click)="onBuy(product)">Buy {{product.name}}</button>
       </div>
