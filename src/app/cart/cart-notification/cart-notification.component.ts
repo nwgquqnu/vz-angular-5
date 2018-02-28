@@ -10,7 +10,7 @@ import { CartItem } from '../../models/cart-item.model';
 })
 export class CartNotificationComponent implements OnInit, OnDestroy {
   private sub: Subscription;
-  event: {type: string, item: CartItem};
+  event: {type: string, item?: CartItem};
 
   constructor(private cartService: CartService) { }
 

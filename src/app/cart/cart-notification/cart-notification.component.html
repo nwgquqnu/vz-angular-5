@@ -1,7 +1,9 @@
 <app-notification >
   <ng-container *ngIf="event">
     {{event.type}}
-    <ng-container *ngIf="event.type.indexOf('quantity') > -1">for</ng-container> 
-    item {{event.item.product.name}}
+    <ng-container *ngIf="event.type.indexOf('quantity') > -1">for</ng-container>
+    <ng-container *ngIf="event.item">
+      item {{event.item.product.name}}
+    </ng-container>
   </ng-container>
 </app-notification>

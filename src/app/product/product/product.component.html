@@ -3,14 +3,14 @@
         Products
     </div>
     <div class="panel-body">
-      <div class="product" *ngIf="product$ | async as product">
-        <div>
+      <div class="product" *ngIf="product$ | async as product" appChangeColor="lightsalmon">
+  <div>
           <span>Product name:</span>
           <span>{{product.name}}</span>
           <span *ngIf="product.isAvailable;else elseBlock" class="label label-success">in store</span>
           <ng-template #elseBlock><span class="label label-danger"> sold out</span></ng-template>
         </div>
-        <div><span>Category:</span> <span>{{category | async}}</span></div>
+        <div><span>Category:</span> <span>{{category | async | uppercase}}</span></div>
         <div>
           <span>Price:</span> <span>{{product.price}}</span>
         </div>
@@ -29,6 +29,6 @@
         <p>
             <button class="btn btn-default" (click)="gotoProducts(product)">Back</button>
           </p>
-      </div>
+     </div>
   </div>
 </div>
