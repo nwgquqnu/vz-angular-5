@@ -8,19 +8,20 @@ import { ProductModule } from './product/product.module';
 import { ConfigOptionsService } from './services/config-options.service';
 import { ConstantsService, constantsService } from './services/constants.service';
 import { AppRoutingModule } from './app-routing.module';
-import { PageNotFoundComponent } from './page-not-found.component';
 import { Router } from '@angular/router';
+
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     CartModule,
     ProductModule,
-    AppRoutingModule
+    CoreModule,
+    AppRoutingModule,
   ],
   bootstrap: [AppComponent],
   providers: [

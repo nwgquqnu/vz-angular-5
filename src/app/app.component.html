@@ -22,6 +22,8 @@
             <a class="btn btn-default" [routerLink]="['/cart']" routerLinkActive="active">Cart <span class="badge">{{totalCartItems}}</span></a>
             <a class="btn btn-default" [routerLink]="['/admin']" routerLinkActive="active">Admin</a>
             <a class="btn btn-default" [routerLink]="[{outlets:{notifications:['cart']}}]" routerLinkActive="active" (click)="notificationsClicked()">Notifications</a>
+            <a class="btn btn-default" [routerLink]="['/users']" routerLinkActive="active">Users</a>
+            <a class="btn btn-default" [routerLink]="['/login']" routerLinkActive="active">login</a>
         </nav>
     </div></div>
     <div class="row"><div class="col-md-12">

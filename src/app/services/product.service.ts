@@ -18,7 +18,7 @@ export class ProductService {
       this.availableProduct(3, 'Liebbher fridge', 1800),
       this.soldOutProduct(4),
     ];
-    return Observable.interval(500)
+    return Observable.interval(100)
     .map(i => products.slice(0, i + 1))
     .take(products.length);
   }

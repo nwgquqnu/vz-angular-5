@@ -9,6 +9,7 @@ import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartListComponent } from './cart-list/cart-list.component';
 import { CartNotificationComponent } from './cart-notification/cart-notification.component';
 import { CartRoutingModule } from './cart-routing.module';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { CartRoutingModule } from './cart-routing.module';
     FormsModule,
     CartRoutingModule
   ],
-  declarations: [CartListComponent, CartItemComponent, CartNotificationComponent],
+  declarations: [CartListComponent, CartItemComponent, CartNotificationComponent, OrderComponent],
   exports: [CartListComponent, CartNotificationComponent],
   providers: [CartService, LocalStorageService]
 })

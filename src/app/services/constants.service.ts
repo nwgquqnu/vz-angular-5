@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 export class ConstantsService {
 
   readonly CONSTANTS = {
-    app: 'Task3',
-    ver: '1.0'
+    app: 'Task5',
+    ver: '1.01'
   };
 
 }
