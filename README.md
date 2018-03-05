@@ -55,3 +55,15 @@ Usage `someArray | orderBy:sortField[:asc]`
 - `sortField: string` can be any object's field inside `someArray`. Accepts paths, e.g. `product.price`, where product is a field inside sorted object
 - `asc: boolean` specifies sorting order. default value is `false`, Can be eigher `true` or `false`
 
+### Routes
+
+There are five modules: Admin, Cart, Product, Shared, Core
+
+/admin - loaded on demand and protected by canLoad guard
+/admin/products/edit/1 uses Resolve guard
+notification button enables secondary route
+
+
+When items are added to the cart, Process button appears and allows to create order which is visible on /admin/orders page
+
+Title is used to change page title using data.title property inside routes
