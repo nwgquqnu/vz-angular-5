@@ -8,8 +8,10 @@ import { SharedModule } from '../shared/shared.module';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartListComponent } from './cart-list/cart-list.component';
 import { CartNotificationComponent } from './cart-notification/cart-notification.component';
-import { CartRoutingModule } from './cart-routing.module';
+import { CartRoutingModule, cartRouterComponents } from './cart-routing.module';
 import { OrderComponent } from './order/order.component';
+import { CartItemsComponent } from './cart-items/cart-items.component';
+import { OrderService } from './services/order.service';
 
 @NgModule({
   imports: [
@@ -18,8 +20,8 @@ import { OrderComponent } from './order/order.component';
     FormsModule,
     CartRoutingModule
   ],
-  declarations: [CartListComponent, CartItemComponent, CartNotificationComponent, OrderComponent],
-  exports: [CartListComponent, CartNotificationComponent],
-  providers: [CartService, LocalStorageService]
+  declarations: [cartRouterComponents, CartItemComponent],
+  exports: [CartNotificationComponent],
+  providers: [CartService, LocalStorageService, OrderService]
 })
 export class CartModule { }

@@ -1,0 +1,6 @@
+
+<a class="btn btn-default" [routerLink]="['add']">Add product</a>
+<ul class="nav nav-pills nav-stacked">
+  <li *ngFor="let product of products$ | async" [class.active]="product.id === selectedId">
+    <a class="product-name" [routerLink]="['edit', product.id]">{{product.name}}</a>
+</li>

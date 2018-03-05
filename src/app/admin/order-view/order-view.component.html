@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+	<div class="panel-heading">Order</div>
+	<div class="panel-body">
+		<ul>
+			<li>FirtsName: {{order.user.firstName}}</li>
+      <li>LastName: {{order.user.lastName}}</li>
+      <li>Total: {{order.totalValue}}</li>
+      <li>
+        Products:
+        <ul>
+          <li *ngFor="let item of order.items">{{item.product.name}}</li>
+        </ul>
+      </li>
+
+		</ul>
+	</div>
+</div>

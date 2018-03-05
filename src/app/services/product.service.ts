@@ -10,23 +10,38 @@ import { Product } from '../models/product.model';
 
 @Injectable()
 export class ProductService {
+  private products: Array<Product> = [
+    this.availableProduct(1, 'Samsung fridge', 1500),
+    this.availableProduct(2, 'LG fridge', 2000),
+    this.availableProduct(3, 'Liebbher fridge', 1800),
+    this.soldOutProduct(4),
+  ];
 
   getProducts(): Observable<Product[]> {
-    const products = [
-      this.availableProduct(1, 'Samsung fridge', 1500),
-      this.availableProduct(2, 'LG fridge', 2000),
-      this.availableProduct(3, 'Liebbher fridge', 1800),
-      this.soldOutProduct(4),
-    ];
     return Observable.interval(100)
-    .map(i => products.slice(0, i + 1))
-    .take(products.length);
+    .map(i => this.products.slice(0, i + 1))
+    .take(this.products.length);
   }
 
   getProduct(id: number) {
-    return this.getProducts().map((products) =>
-      products.find(product => product.id === id)
-    );
+    const product: Product = this.products.find(p => p.id === id);
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!' + id);
+    console.log(product);
+    return Observable.of(product);
+  }
+
+  updateProduct(product: Product) {
+    const i = this.products.findIndex(t => t.id === product.id);
+
+    if (i > -1) {
+      this.products.splice(i, 1, product);
+    }
+  }
+
+  addProduct(product: Product): void {
+    const nextId = this.products.length + 1;
+    product.id = nextId;
+    this.products.push(product);
   }
 
   private availableProduct(id: number, name: string, price: number) {
@@ -45,5 +60,6 @@ export class ProductService {
     newProduct.isAvailable = false;
     return newProduct;
   }
+
 
 }

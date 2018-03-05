@@ -1,33 +1,33 @@
 <div class="panel panel-default">
   <div class="panel-heading">
       <h4 class="pannel-title">
-          User Form
+          Product Form
       </h4>
   </div>
   <div class="panel-body">
-      <form *ngIf="user" (ngSubmit)="saveUser()" id="user-form" #form="ngForm">
+      <form *ngIf="product" (ngSubmit)="saveProduct()" id="product-form" #form="ngForm">
         <div class="form-group">
-          <label for="firstName">First Name</label>
+          <label for="name">Name</label>
           <input type="text" 
               class="form-control" 
-              id="firstName" name="firstName"
-              placeholder="First Name"
+              id="name" name="name"
+              placeholder="Name"
               required
-              [(ngModel)]="user.firstName">
+              [(ngModel)]="product.name">
         </div>
         <div class="form-group">
-          <label for="lastName">Last Name</label>
-          <input type="text" 
+          <label for="price">Price</label>
+          <input type="number" 
               class="form-control" 
-              id="lastName" name="lastName"
-              placeholder="Last Name"
-              [(ngModel)]="user.lastName">
+              id="price" name="price"
+              placeholder="Price"
+              [(ngModel)]="product.price">
         </div>
   <button 
           type="submit" 
           class="btn btn-primary"
-   [disabled]="form.invalid"
-          form="user-form">Save
+          [disabled]="form.invalid"
+          form="product-form">Save
       </button>
       <button class="btn btn-primary"
           type="button"

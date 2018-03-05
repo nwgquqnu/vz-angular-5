@@ -21,8 +21,9 @@
       Total items in cart: {{totalItems}}
     </div>
     <div>
-      Sum to pay: {{totalSum | currency:USD:symbol}}
+      Sum to pay: {{totalSum | currency:'USD':'symbol'}}
     </div>
+    <a [routerLink]="['order']" class="btn btn-primary">Proceed with order</a>
       </ng-container>
       <ng-template #no_items>No items.</ng-template>
   </div>

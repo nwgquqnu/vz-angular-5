@@ -15,11 +15,6 @@ const appRoutes: Routes = [
     loadChildren: 'app/admin/admin.module#AdminModule',
     data: { title: 'Admin'}
   },
-  {
-    path: 'users',
-    loadChildren: 'app/users/users.module#UsersModule',
-    data: { title: 'Users'}
-  },
   { path: '',   redirectTo: '/products', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent, data: { title: 'Page not found'}  }
 ];
